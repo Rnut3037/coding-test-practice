@@ -1,0 +1,18 @@
+function solution(n, arr1, arr2) {
+    const wall1 = [];
+    const wall2 = [];
+    const ttwalls = [];
+    
+    for (let one of arr1) wall1.push(parseInt(one.toString(2)));
+    for (let two of arr2) wall2.push(parseInt(two.toString(2)));
+    
+    for (let num = 0 ; num <= n - 1 ; num++) {
+        ttwalls.push(wall1[num] + wall2[num] + '')
+        if (ttwalls[num].length < n ) ttwalls[num] = '0'.repeat(n - ttwalls[num].length) + ttwalls[num];
+    }
+    
+    return ttwalls.map((wall) => {
+        return wall.replace(/0/g, ' ').replace(/1/g, '#').replace(/2/g, '#')
+    });
+    
+}
